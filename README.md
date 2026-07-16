@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://nexa-flow-fawn.vercel.app"><strong>Live demo</strong></a>
   ·
-  <a href="https://www.behance.net/REPLACE_ME"><strong>Behance case study</strong></a>
+  <a href="https://www.behance.net/gallery/252848357/NexaFlow-SaaS-Landing-Page-AI-Assistant"><strong>Behance case study</strong></a>
 </p>
 
 <p align="center">
@@ -195,4 +195,4 @@ Design & development by **Hi Webinator**. AI assistant powered by [Groq](https:/
 | | |
 |---|---|
 | 🖥️ Live site | [nexa-flow-fawn.vercel.app](https://nexa-flow-fawn.vercel.app) |
-| 🎨 Behance case study | [Design process & visual breakdown](https://www.behance.net/REPLACE_ME) |
+| 🎨 Behance case study | [Design process & visual breakdown](https://www.behance.net/gallery/252848357/NexaFlow-SaaS-Landing-Page-AI-Assistant) |
