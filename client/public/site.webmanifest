@@ -1,0 +1,17 @@
+{
+  "name": "NexaFlow",
+  "short_name": "NexaFlow",
+  "description": "The operating system for high-performance teams.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06060e",
+  "theme_color": "#06060e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

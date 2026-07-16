@@ -1,0 +1,80 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.respond(v.$bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+.serviceCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r2;
+  padding: 2.2rem;
+  transition: all 0.3s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, v.$accent, v.$accent2);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s;
+  }
+  &:hover {
+    border-color: rgba(v.$accent, 0.4);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  h3 {
+    font-family: v.$font-head;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+  p {
+    color: v.$text2;
+    font-size: 0.87rem;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+}
+.serviceNum {
+  font-family: v.$font-head;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.04);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  color: v.$accent;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: gap 0.2s;
+  &:hover {
+    gap: 0.7rem;
+  }
+}

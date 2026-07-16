@@ -1,0 +1,83 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: v.$border;
+  border-radius: v.$r2;
+  overflow: hidden;
+  margin-top: 3.5rem;
+
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include m.respond(v.$bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+.featureCard {
+  background: v.$bg2;
+  padding: 2.2rem;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: radial-gradient(
+      circle at var(--mx, 50%) var(--my, 50%),
+      rgba(v.$accent, 0.1) 0%,
+      transparent 60%
+    );
+    transition: opacity 0.4s;
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+  &.wide {
+    grid-column: span 2;
+    @include m.respond(v.$bp-md) {
+      grid-column: span 1;
+    }
+  }
+
+  h3 {
+    font-family: v.$font-head;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+  p {
+    color: v.$text2;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+}
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: v.$r;
+  background: rgba(v.$accent, 0.12);
+  border: 1px solid rgba(v.$accent, 0.25);
+  @include m.flex-center();
+  font-size: 1.3rem;
+  margin-bottom: 1.3rem;
+}
+.featureTag {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: rgba(v.$accent, 0.1);
+  color: v.$accent;
+}

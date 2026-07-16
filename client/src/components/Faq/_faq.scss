@@ -1,0 +1,45 @@
+@use "../../styles/variables" as v;
+
+.faqList {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faqItem {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r;
+  overflow: hidden;
+  transition: border-color 0.25s;
+  &.open {
+    border-color: rgba(v.$accent, 0.3);
+  }
+}
+.faqQ {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  gap: 1rem;
+  // Reset native button styles (the question is a <button> for accessibility)
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  font-family: inherit;
+}
+.faqArrow {
+  display: inline-block;
+  color: v.$text3;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.faqA {
+  overflow: hidden;
+}

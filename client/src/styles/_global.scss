@@ -1,0 +1,192 @@
+@use "./variables" as v;
+@use "./mixins" as m;
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #{v.$bg};
+  --bg2: #{v.$bg2};
+  --bg3: #{v.$bg3};
+  --surface: #{v.$surface};
+  --surface2: #{v.$surface2};
+  --border: #{v.$border};
+  --border2: #{v.$border2};
+  --text: #{v.$text};
+  --text2: #{v.$text2};
+  --text3: #{v.$text3};
+  --accent: #{v.$accent};
+  --accent2: #{v.$accent2};
+  --accent3: #{v.$accent3};
+  --font-head: #{v.$font-head};
+  --font-body: #{v.$font-body};
+  --r: #{v.$r};
+  --r2: #{v.$r2};
+  --r3: #{v.$r3};
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: v.$bg;
+  color: v.$text;
+  font-family: v.$font-body;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: v.$bg;
+}
+::-webkit-scrollbar-thumb {
+  background: v.$accent;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+button {
+  cursor: pointer;
+  font-family: v.$font-body;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$accent;
+  margin-bottom: 1rem;
+
+  &::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background: v.$accent;
+    border-radius: 2px;
+  }
+}
+
+.section-title {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  color: v.$text2;
+  font-size: 1.05rem;
+  max-width: 520px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.grad-text {
+  @include m.grad-text();
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// shared sections styles
+.section {
+  @include m.section-padding();
+  position: relative;
+}
+
+.bgDark {
+  background: v.$bg2;
+}
+
+.bgDarker {
+  background: v.$bg3;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$accent;
+  margin-bottom: 1rem;
+  &::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background: v.$accent;
+    border-radius: 2px;
+  }
+}
+
+.sectionTitle {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.sectionSub {
+  color: v.$text2;
+  font-size: 1.05rem;
+  max-width: 520px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+// ── Accessibility
+
+// Visible focus ring for keyboard users only
+:focus-visible {
+  outline: 2px solid v.$accent;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+// Respect users who prefer reduced motion (WCAG 2.3.3)
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

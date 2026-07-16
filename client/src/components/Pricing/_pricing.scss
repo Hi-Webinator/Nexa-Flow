@@ -1,0 +1,152 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.pricingToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0 3rem;
+}
+.toggleLabel {
+  font-size: 0.88rem;
+  color: v.$text2;
+}
+.toggleSwitch {
+  width: 46px;
+  height: 24px;
+  padding: 0;
+  background: v.$surface2;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid v.$border2;
+  transition: background 0.3s;
+  &.active {
+    background: v.$accent;
+  }
+}
+.toggleKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  .active & {
+    left: 25px;
+  }
+}
+.saveBadge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  background: rgba(v.$accent3, 0.1);
+  color: v.$accent3;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+.pricingCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r2;
+  padding: 2.2rem;
+  transition: all 0.3s;
+  position: relative;
+
+  &.featured {
+    border-color: rgba(v.$accent, 0.5);
+    background: linear-gradient(160deg, v.$surface, rgba(v.$accent, 0.07));
+    box-shadow: 0 0 60px rgba(v.$accent, 0.15);
+
+    &::before {
+      content: "Recommended";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, v.$accent, v.$accent2);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+}
+.planName {
+  font-family: v.$font-head;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: v.$text2;
+  margin-bottom: 1rem;
+}
+.planPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+.planPriceNum {
+  font-family: v.$font-head;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.planPricePeriod {
+  color: v.$text3;
+  font-size: 0.85rem;
+}
+.planDesc {
+  color: v.$text3;
+  font-size: 0.82rem;
+  margin-bottom: 1.5rem;
+  min-height: 2.5rem;
+}
+.planDivider {
+  border: none;
+  border-top: 1px solid v.$border;
+  margin-bottom: 1.5rem;
+}
+.planFeatures {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: v.$text2;
+    &::before {
+      content: "✦";
+      color: v.$accent;
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      margin-top: 0.25rem;
+    }
+    &.dim {
+      color: v.$text3;
+      &::before {
+        color: v.$text3;
+      }
+    }
+  }
+}

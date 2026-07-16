@@ -1,0 +1,628 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.about {
+  background: v.$bg;
+  min-height: 100vh;
+}
+
+// ── Hero
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 5% 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroOrb1 {
+  position: absolute;
+  top: -180px;
+  left: -180px;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(v.$accent, 0.22) 0%,
+    transparent 70%
+  );
+  filter: blur(70px);
+  animation: breathe 10s ease-in-out infinite;
+}
+
+.heroOrb2 {
+  position: absolute;
+  bottom: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(v.$accent2, 0.16) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  animation: breathe 13s ease-in-out infinite reverse;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(v.$border 1px, transparent 1px),
+    linear-gradient(90deg, v.$border 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(
+    ellipse 75% 70% at 50% 50%,
+    black 35%,
+    transparent 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(v.$accent, 0.12);
+  border: 1px solid rgba(v.$accent, 0.3);
+  border-radius: v.$r3;
+  font-size: 0.78rem;
+  color: v.$accent;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: v.$accent;
+  animation: pulse 2s ease infinite;
+}
+
+.heroTitle {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1.4rem;
+}
+
+.grad {
+  background: linear-gradient(135deg, v.$accent, v.$accent2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSub {
+  color: v.$text2;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ── Stats bar
+.statsBar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid v.$border;
+  border-bottom: 1px solid v.$border;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 2.5rem 1rem;
+  border-right: 1px solid v.$border;
+  &:last-child {
+    border-right: none;
+  }
+  @include m.respond(v.$bp-md) {
+    &:nth-child(2) {
+      border-right: none;
+    }
+  }
+}
+.statNum {
+  font-family: v.$font-head;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, v.$text, v.$text2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.statLabel {
+  color: v.$text3;
+  font-size: 0.83rem;
+}
+
+// ── Shared section labels
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$accent;
+  margin-bottom: 0.9rem;
+  &::before {
+    content: "";
+    width: 18px;
+    height: 2px;
+    background: v.$accent;
+    border-radius: 2px;
+  }
+}
+.sectionTitle {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.sectionSub {
+  color: v.$text2;
+  font-size: 1rem;
+  max-width: 480px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+// ── Mission
+.mission {
+  padding: 110px 5%;
+  background: v.$bg2;
+}
+.missionInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+.missionText {
+  color: v.$text2;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.missionRight {
+  position: relative;
+}
+.missionCard {
+  background: v.$surface;
+  border: 1px solid v.$border2;
+  border-radius: v.$r2;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, v.$accent, v.$accent2);
+  }
+}
+.mcQuote {
+  font-family: v.$font-head;
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(v.$accent, 0.2);
+  line-height: 0.8;
+  margin-bottom: 1rem;
+}
+.mcText {
+  color: v.$text;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+.mcAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.mcAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  @include m.flex-center();
+  font-family: v.$font-head;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.mcName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.mcRole {
+  color: v.$text3;
+  font-size: 0.78rem;
+}
+
+.missionFloatCard {
+  position: absolute;
+  bottom: -24px;
+  right: -16px;
+  background: v.$surface;
+  border: 1px solid v.$border2;
+  border-radius: v.$r;
+  padding: 0.9rem 1.2rem;
+  backdrop-filter: blur(12px);
+  font-size: 0.82rem;
+  animation: float1 7s ease-in-out infinite;
+  @include m.respond(v.$bp-md) {
+    display: none;
+  }
+}
+.mfcRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.mfcDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: v.$accent3;
+  flex-shrink: 0;
+  animation: pulse 2s ease infinite;
+}
+.mfcSub {
+  color: v.$text3;
+  font-size: 0.75rem;
+}
+
+// ── Timeline
+.timelineSection {
+  padding: 110px 5%;
+  background: v.$bg3;
+}
+.timelineHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, v.$accent, transparent);
+  transform: translateX(-50%);
+  @include m.respond(v.$bp-md) {
+    left: 20px;
+  }
+}
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+
+  &.left {
+    justify-content: flex-start;
+    padding-right: calc(50% + 2rem);
+  }
+  &.right {
+    justify-content: flex-end;
+    padding-left: calc(50% + 2rem);
+  }
+
+  @include m.respond(v.$bp-md) {
+    &.left,
+    &.right {
+      padding: 0 0 0 56px;
+      justify-content: flex-start;
+    }
+  }
+}
+.timelineCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r2;
+  padding: 1.6rem 1.8rem;
+  flex: 1;
+  max-width: 380px;
+  transition: border-color 0.25s;
+  &:hover {
+    border-color: rgba(v.$accent, 0.35);
+  }
+  @include m.respond(v.$bp-md) {
+    max-width: 100%;
+  }
+}
+.timelineYear {
+  font-family: v.$font-head;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$accent;
+  margin-bottom: 0.5rem;
+}
+.timelineTitle {
+  font-family: v.$font-head;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+.timelineDesc {
+  color: v.$text2;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+.timelineDot {
+  position: absolute;
+  left: 50%;
+  top: 1.8rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: v.$accent;
+  border: 3px solid v.$bg3;
+  box-shadow: 0 0 14px rgba(v.$accent, 0.5);
+  transform: translateX(-50%);
+  @include m.respond(v.$bp-md) {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+}
+
+// ── Values
+.valuesSection {
+  padding: 110px 5%;
+  background: v.$bg2;
+}
+.valuesHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  .sectionSub {
+    margin: 0 auto;
+  }
+}
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include m.respond(v.$bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+.valueCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r2;
+  padding: 2rem;
+  cursor: default;
+  transition: all 0.3s;
+  &:hover {
+    border-color: rgba(v.$accent, 0.35);
+  }
+}
+.valueIcon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.valueTitle {
+  font-family: v.$font-head;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+.valueDesc {
+  color: v.$text2;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+// ── Team
+.teamSection {
+  padding: 110px 5%;
+  background: v.$bg3;
+}
+.teamHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  .sectionSub {
+    margin: 0 auto;
+  }
+}
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+  @include m.respond(v.$bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include m.respond(v.$bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.teamCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r2;
+  padding: 1.8rem 1rem;
+  text-align: center;
+  cursor: default;
+  transition: all 0.3s;
+  &:hover {
+    border-color: rgba(v.$accent, 0.35);
+  }
+}
+.teamAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  @include m.flex-center();
+  font-family: v.$font-head;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 24px rgba(v.$accent, 0.25);
+}
+.teamName {
+  font-family: v.$font-head;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+.teamRole {
+  color: v.$text3;
+  font-size: 0.77rem;
+}
+
+.teamCta {
+  text-align: center;
+  margin-top: 2.5rem;
+  p {
+    color: v.$text2;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// ── CTA
+.ctaSection {
+  padding: 120px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ctaGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 75% 60% at 50% 50%,
+    rgba(v.$accent, 0.17) 0%,
+    transparent 70%
+  );
+}
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.ctaTitle {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.ctaSub {
+  color: v.$text2;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.ctaActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ── Keyframes
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}

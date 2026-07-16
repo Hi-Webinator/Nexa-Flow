@@ -1,0 +1,62 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.testiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+.testiCard {
+  background: v.$surface;
+  border: 1px solid v.$border;
+  border-radius: v.$r2;
+  padding: 1.8rem;
+  transition: all 0.3s;
+  &:hover {
+    border-color: v.$border2;
+  }
+}
+.stars {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+  color: #fbbf24;
+  font-size: 0.85rem;
+}
+.testiText {
+  color: v.$text2;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.testiAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.testiAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, v.$accent, v.$accent2);
+  @include m.flex-center;
+  font-family: v.$font-head;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.testiName {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+.testiRole {
+  color: v.$text3;
+  font-size: 0.77rem;
+}

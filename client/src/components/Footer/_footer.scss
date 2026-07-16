@@ -1,0 +1,145 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.footer {
+  background: v.$bg !important;
+  border-top: 1px solid v.$border;
+  padding: 60px 5% 40px;
+}
+.footerTop {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include m.respond(v.$bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+.footerLogo {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  span {
+    color: v.$accent;
+  }
+}
+.footerTagline {
+  color: v.$text3;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-width: 280px;
+  font-weight: 300;
+}
+.socials {
+  display: flex;
+  flex-direction: row !important;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+.socialIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: v.$surface;
+  border: 1px solid v.$border;
+  @include m.flex-center();
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  color: v.$text2;
+  text-decoration: none;
+  &:hover {
+    border-color: v.$accent;
+    color: v.$accent;
+  }
+}
+.footerColTitle {
+  font-family: v.$font-head;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: v.$text;
+  margin-bottom: 1rem;
+}
+.footerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  a {
+    color: v.$text3;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    &:hover {
+      color: v.$text;
+    }
+  }
+}
+.footerNewsletterDesc {
+  font-size: 0.82rem;
+  color: v.$text3;
+  line-height: 1.6;
+}
+.newsletterForm {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.newsletterInput {
+  flex: 1;
+  background: v.$surface;
+  border: 1px solid v.$border2;
+  border-radius: v.$r3;
+  padding: 0.6rem 1rem;
+  color: v.$text;
+  font-family: v.$font-body;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.25s;
+  &:focus {
+    border-color: v.$accent;
+  }
+  &::placeholder {
+    color: v.$text3;
+  }
+}
+.newsletterNote {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: v.$accent3;
+  &.error {
+    color: #ff8f8f;
+  }
+}
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid v.$border;
+  font-size: 0.8rem;
+  color: v.$text3;
+  @include m.respond(v.$bp-sm) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.footerBottomLinks {
+  display: flex;
+  gap: 1.5rem;
+  a {
+    color: v.$text3;
+    text-decoration: none;
+    transition: color 0.2s;
+    &:hover {
+      color: v.$text;
+    }
+  }
+}

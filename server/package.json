@@ -1,0 +1,20 @@
+{
+  "name": "nexaflow-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express API that proxies the NexaFlow AI assistant to any OpenAI-compatible LLM provider (Groq free tier by default)",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api.js",
+    "dev": "node --watch api.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0"
+  }
+}

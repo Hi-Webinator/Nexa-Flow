@@ -1,0 +1,582 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+// ── Page layout
+.signIn {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background: v.$bg;
+}
+
+// ── Background elements
+.orb1 {
+  position: fixed;
+  top: -200px;
+  left: -200px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(v.$accent, 0.2) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: breathe 10s ease-in-out infinite;
+}
+.orb2 {
+  position: fixed;
+  bottom: -150px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(v.$accent2, 0.15) 0%,
+    transparent 70%
+  );
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+  animation: breathe 14s ease-in-out infinite reverse;
+}
+.grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(v.$border 1px, transparent 1px),
+    linear-gradient(90deg, v.$border 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 30%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+// ── Left panel
+.leftPanel {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 5%;
+  @include m.respond(v.$bp-md) {
+    display: none;
+  }
+}
+
+.leftContent {
+  max-width: 480px;
+  width: 100%;
+}
+
+.leftLogo {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+  color: v.$text;
+  span {
+    color: v.$accent;
+  }
+}
+
+.leftHeading {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.grad {
+  background: linear-gradient(135deg, v.$accent 0%, v.$accent2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.leftSub {
+  color: v.$text2;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 360px;
+  margin-bottom: 2.5rem;
+}
+
+// ── Stats row
+.statRow {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.statNum {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, v.$text, v.$text2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.statLabel {
+  color: v.$text3;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+// ── Background floating cards
+.bgCard {
+  @include m.glass();
+  border-radius: v.$r;
+  padding: 1rem 1.2rem;
+  position: absolute;
+  font-size: 0.8rem;
+  color: v.$text;
+}
+.bc1 {
+  bottom: 10%;
+  left: 5%;
+  min-width: 220px;
+}
+.bc2 {
+  top: 12%;
+  right: 8%;
+  min-width: 170px;
+}
+.bc3 {
+  top: 45%;
+  left: 2%;
+  min-width: 180px;
+}
+
+.bcRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+.bcDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.bcSmall {
+  color: v.$text3;
+  font-size: 0.72rem;
+}
+.bcLabel {
+  color: v.$text3;
+  font-size: 0.72rem;
+  margin-bottom: 0.5rem;
+}
+.bcBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+}
+.bcBar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, v.$accent, rgba(v.$accent, 0.3));
+}
+.bcAvatars {
+  display: flex;
+}
+.bcAvatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid v.$bg;
+  background: linear-gradient(135deg, v.$accent, v.$accent2);
+  @include m.flex-center();
+  font-family: v.$font-head;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #fff;
+  margin-left: -6px;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+.bcActive {
+  color: v.$accent3;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+// ── Right panel
+.rightPanel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 32px;
+  background: rgba(v.$bg, 0.5);
+  backdrop-filter: blur(32px);
+  border-left: 1px solid v.$border;
+
+  @include m.respond(v.$bp-md) {
+    max-width: 100%;
+    border-left: none;
+    padding: 32px 20px;
+  }
+}
+
+// ── Card
+.authCard {
+  width: 100%;
+  max-width: 420px;
+}
+
+// ── Card header
+.cardHeader {
+  margin-bottom: 2rem;
+}
+.cardLogo {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: v.$text;
+  margin-bottom: 1.5rem;
+  span {
+    color: v.$accent;
+  }
+
+  @include m.respond(v.$bp-md) {
+    display: block;
+  }
+}
+.cardTitle {
+  font-family: v.$font-head;
+  font-weight: 800;
+  font-size: 1.65rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+.cardSub {
+  color: v.$text3;
+  font-size: 0.88rem;
+}
+.cardLink {
+  color: v.$accent;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  &:hover {
+    color: v.$accent2;
+  }
+}
+
+// ── Social buttons
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+.socialBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1.1rem;
+  background: rgba(v.$surface, 0.8);
+  border: 1px solid v.$border2;
+  border-radius: v.$r;
+  color: v.$text;
+  font-family: v.$font-body;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: left;
+
+  svg {
+    flex-shrink: 0;
+  }
+  &:hover {
+    background: v.$surface2;
+  }
+}
+
+// ── Divider
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: v.$text3;
+  font-size: 0.8rem;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: v.$border;
+  }
+}
+
+// ── Form
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+// ── Field
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.fieldFocused .inputWrap {
+  border-color: v.$accent;
+  box-shadow: 0 0 0 3px rgba(v.$accent, 0.12);
+}
+.fieldError .inputWrap {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12);
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: v.$text2;
+}
+.forgotLink {
+  font-size: 0.8rem;
+  color: v.$accent;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  &:hover {
+    color: v.$accent2;
+  }
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(v.$surface, 0.8);
+  border: 1px solid v.$border2;
+  border-radius: v.$r;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.inputIcon {
+  position: absolute;
+  left: 1rem;
+  color: v.$text3;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  color: v.$text;
+  font-family: v.$font-body;
+  font-size: 0.9rem;
+  width: 100%;
+
+  &::placeholder {
+    color: v.$text3;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px v.$surface inset;
+    -webkit-text-fill-color: v.$text;
+  }
+}
+.eyeBtn {
+  background: none;
+  border: none;
+  padding: 0 1rem;
+  color: v.$text3;
+  cursor: pointer;
+  @include m.flex-center();
+  transition: color 0.2s;
+  &:hover {
+    color: v.$text;
+  }
+}
+
+// ── Remember me
+.rememberRow {
+  display: flex;
+  align-items: center;
+}
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+.checkbox {
+  display: none;
+}
+.checkBox {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid v.$border2;
+  background: rgba(v.$surface, 0.8);
+  @include m.flex-center();
+  flex-shrink: 0;
+  transition: all 0.2s;
+
+  .checkbox:checked + & {
+    background: v.$accent;
+    border-color: v.$accent;
+  }
+}
+.checkText {
+  font-size: 0.83rem;
+  color: v.$text2;
+}
+
+// ── Error message
+.errorMsg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: v.$r;
+  color: #f87171;
+  font-size: 0.83rem;
+  overflow: hidden;
+}
+
+// ── Submit button
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 1.5rem;
+  background: v.$accent;
+  color: #fff;
+  border: none;
+  border-radius: v.$r;
+  font-family: v.$font-head;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  box-shadow: 0 0 28px rgba(v.$accent, 0.4);
+  transition: all 0.25s;
+  margin-top: 0.25rem;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+.arrow {
+  font-size: 1.1rem;
+}
+
+// ── Spinner
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(#fff, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+// ── Footer note
+.footerNote {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: v.$text3;
+  line-height: 1.6;
+}
+
+// ── Success state
+.successState {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.successIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, v.$accent, v.$accent2);
+  @include m.flex-center();
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 0 40px rgba(v.$accent, 0.5);
+}
+.successState h3 {
+  font-family: v.$font-head;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.successState p {
+  color: v.$text2;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+.successBar {
+  height: 2px;
+  background: linear-gradient(90deg, v.$accent, v.$accent2);
+  border-radius: 2px;
+}
+
+// ── Keyframes
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}

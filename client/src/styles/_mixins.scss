@@ -1,0 +1,40 @@
+@use "./variables" as v;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin grad-text {
+  background: linear-gradient(135deg, v.$accent 0%, v.$accent2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin glass {
+  background: rgba(v.$surface, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid v.$border2;
+}
+
+@mixin glow-shadow($color: v.$accent) {
+  box-shadow: 0 0 32px rgba($color, 0.3);
+}
+
+@mixin respond($bp) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin section-padding {
+  padding: 100px 5%;
+  @include respond(v.$bp-md) {
+    padding: 70px 5%;
+  }
+  @include respond(v.$bp-sm) {
+    padding: 50px 5%;
+  }
+}

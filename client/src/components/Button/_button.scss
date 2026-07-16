@@ -1,0 +1,58 @@
+@use "../../styles/variables" as v;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: v.$r3;
+  font-family: v.$font-body;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: none;
+  white-space: nowrap;
+
+  &.sm {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.82rem;
+  }
+  &.md {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  &.lg {
+    padding: 0.85rem 2.2rem;
+    font-size: 1rem;
+  }
+
+  &.primary {
+    background: v.$accent;
+    color: #fff;
+    box-shadow: 0 0 28px rgba(v.$accent, 0.35);
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 42px rgba(v.$accent, 0.55);
+      color: #fff;
+    }
+  }
+
+  &.outline {
+    background: transparent;
+    color: v.$text2;
+    border: 1px solid v.$border2;
+    &:hover {
+      border-color: v.$accent;
+      color: v.$accent;
+    }
+  }
+
+  &.ghost {
+    background: rgba(255, 255, 255, 0.05);
+    color: v.$text;
+    border: 1px solid v.$border;
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}

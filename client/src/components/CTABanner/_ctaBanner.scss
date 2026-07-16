@@ -1,0 +1,35 @@
+@use "../../styles/variables" as v;
+
+.ctaSection {
+  padding: 120px 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ctaBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(v.$accent, 0.18) 0%,
+    transparent 70%
+  );
+}
+.ctaInner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.ctaDesc {
+  color: v.$text2;
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.ctaActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

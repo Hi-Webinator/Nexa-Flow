@@ -1,0 +1,32 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.statsSection {
+  padding: 80px 5%;
+}
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+  @include m.respond(v.$bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.statNum {
+  font-family: v.$font-head;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, v.$text 0%, v.$text2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.statLabel {
+  color: v.$text3;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
