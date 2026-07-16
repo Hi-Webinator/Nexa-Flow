@@ -10,6 +10,12 @@
 </p>
 
 <p align="center">
+  <a href="https://nexa-flow-fawn.vercel.app"><strong>Live demo</strong></a>
+  ·
+  <a href="https://www.behance.net/REPLACE_ME"><strong>Behance case study</strong></a>
+</p>
+
+<p align="center">
   <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" />
   <img alt="Vite" src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" />
   <img alt="Express" src="https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white" />
@@ -140,9 +146,23 @@ npm run dev               # http://localhost:5173
 
 ## Deployment
 
-- **Client** — static build (`npm run build`) deployable to Vercel, Netlify, or any static host. Configure SPA fallback (all routes → `index.html`) and set `VITE_API_URL`.
-- **Server** — any Node host (Railway, Render, Fly.io). Set `LLM_API_KEY`, `CLIENT_ORIGIN` (your site's URL), and `NODE_ENV=production`.
-- Replace `https://nexaflow.example.com` in `index.html`, `robots.txt`, and `sitemap.xml` with your real domain, and add an `og-image.png` (1200×630) to `client/public/`.
+The marketing site is live at **[nexa-flow-fawn.vercel.app](https://nexa-flow-fawn.vercel.app)**, deployed from `client/` on Vercel.
+
+### Client (Vercel)
+
+Point the Vercel project at the `client/` directory as its root — the Vite preset picks up the build (`npm run build` → `dist/`) automatically. [`client/vercel.json`](client/vercel.json) supplies the SPA fallback that rewrites every non-asset path to `index.html`; without it, deep links like `/about` return a Vercel `NOT_FOUND` instead of loading the app.
+
+Set `VITE_API_URL` to your deployed API's URL in **Project → Settings → Environment Variables**, then redeploy. Vite inlines env vars at build time, so changing this value only takes effect on a new build.
+
+> **Note:** the AI chat widget needs the `server/` API running somewhere reachable. With only the client deployed, `VITE_API_URL` falls back to `http://localhost:3000` and the widget will fail in production — the rest of the site works fine.
+
+### Server
+
+Any Node host (Railway, Render, Fly.io). Set `LLM_API_KEY`, `CLIENT_ORIGIN` (your site's origin — `https://nexa-flow-fawn.vercel.app`), and `NODE_ENV=production`. `CLIENT_ORIGIN` must match the deployed site exactly or the browser will block the chat requests via CORS.
+
+### Forking this project
+
+The canonical URL, Open Graph tags, and JSON-LD in [`client/index.html`](client/index.html), plus [`robots.txt`](client/public/robots.txt) and [`sitemap.xml`](client/public/sitemap.xml), are hardcoded to `https://nexa-flow-fawn.vercel.app`. Replace that host with your own domain before deploying, or your social previews and sitemap will credit this deployment instead of yours.
 
 ## Customization
 
@@ -171,3 +191,8 @@ MIT — free to use as a template for your own product.
 ## Credits
 
 Design & development by **Hi Webinator**. AI assistant powered by [Groq](https://groq.com) (Llama 3.3 70B) — swappable for any OpenAI-compatible provider.
+
+| | |
+|---|---|
+| 🖥️ Live site | [nexa-flow-fawn.vercel.app](https://nexa-flow-fawn.vercel.app) |
+| 🎨 Behance case study | [Design process & visual breakdown](https://www.behance.net/REPLACE_ME) |

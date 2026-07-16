@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nexa-flow.vercel.app/sitemap.xml
+Sitemap: https://nexa-flow-fawn.vercel.app/sitemap.xml
